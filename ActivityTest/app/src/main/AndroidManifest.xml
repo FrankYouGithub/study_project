@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.activitytest">
 
     <application
@@ -10,11 +11,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ActivityTest">
         <activity
-            android:name=".FirstActivity"
+            android:name=".ThirdActivity"
+            android:label="this is ThirdActivity"
             android:exported="true">
+        </activity>
+        <activity
+            android:name=".SecondActivity"
+            android:label="this is SecondActivity"
+            android:launchMode="singleInstance"
+            >
+        </activity>
+        <activity
+            android:name=".FirstActivity"
+            android:exported="true"
+            android:persistableMode="persistAcrossReboots"
+            android:label="this is first Activity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>

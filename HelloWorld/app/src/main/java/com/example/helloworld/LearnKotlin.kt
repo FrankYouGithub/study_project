@@ -1,6 +1,7 @@
 package com.example.helloworld
 
 import java.lang.Math.max
+import java.lang.StringBuilder
 
 
 fun main(){
@@ -46,6 +47,53 @@ fun main(){
     Thread {
         println("thread is runing")
     }.start()
+
+
+
+
+
+
+    // with, run, apply
+    val builder = StringBuilder()
+    builder.append("Start eat fruits. \n")
+    for (fruit in list) {
+        builder.append(fruit).append("\n")
+    }
+    builder.append("eat all finish")
+    val result = builder.toString()
+    println(result)
+    println("-------------------------with------------------------")
+    // with
+    val res1 = with(StringBuilder()) {
+        append("Start eat fruits. \n")
+        for (fruit in list) {
+            append(fruit).append("\n")
+        }
+        append("eat all finish")
+        toString()
+    }
+    println(res1)
+    println("-------------------------run------------------------")
+    val res2 = StringBuilder().run {
+        append("Start eat fruits. \n")
+        for (fruit in list) {
+            append(fruit).append("\n")
+        }
+        append("eat all finish")
+        toString()
+    }
+    println(res2)
+    println("-------------------------apply------------------------")
+    val res3 = StringBuilder().apply {
+        append("Start eat fruits. \n")
+        for (fruit in list) {
+            append(fruit).append("\n")
+        }
+        append("eat all finish")
+    }
+    println(res3.toString())
+
+    println(helloWorld())
 }
 
 
