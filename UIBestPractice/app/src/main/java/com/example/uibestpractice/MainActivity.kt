@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private val msgList = ArrayList<Msg>()
-    private var adapter: MsgAdapter? = null
+    private lateinit var adapter: MsgAdapter
 
     private fun initMsg() {
         val msg1 = Msg("Hello guy.", Msg.TYPE_RECEIVED)
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val content = editText.text.toString()
                 val msg = Msg(content, Msg.TYPE_SEND)
                 msgList.add(msg)
-                adapter?.notifyItemInserted(msgList.size - 1)
+                adapter.notifyItemInserted(msgList.size - 1)
                 recyclerView.scrollToPosition(msgList.size - 1)
                 editText.setText("")
             }

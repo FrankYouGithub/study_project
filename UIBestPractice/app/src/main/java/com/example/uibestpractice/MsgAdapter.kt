@@ -8,14 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import java.lang.Error
 import java.lang.IllegalArgumentException
 
-class MsgAdapter(val msgList: List<Msg>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    inner class LeftViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val leftMsg: TextView = view.findViewById(R.id.msgLeft)
-    }
-    inner class RightViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val rightMsg: TextView = view.findViewById(R.id.msgRight)
-    }
-
+class MsgAdapter(val msgList: List<Msg>) : RecyclerView.Adapter<MsgViewAdapter>() {
     override fun getItemViewType(position: Int): Int {
         val msg = msgList[position]
         return msg.type
@@ -28,15 +21,13 @@ class MsgAdapter(val msgList: List<Msg>) : RecyclerView.Adapter<RecyclerView.Vie
         val view = LayoutInflater.from(parent.context).inflate(R.layout.message_right_item, parent, false)
         RightViewHolder(view)
     }
-
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun getItemCount() = msgList.size
+    override fun onBindViewHolder(holder: MsgViewAdapter, position: Int) {
         val msg = msgList[position]
         when(holder) {
             is LeftViewHolder -> holder.leftMsg.text = msg.content
             is RightViewHolder -> holder.rightMsg.text = msg.content
-            else -> throw IllegalArgumentException()
         }
     }
-
-    override fun getItemCount() = msgList.size
 }
+
