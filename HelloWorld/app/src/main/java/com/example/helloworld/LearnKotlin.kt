@@ -94,6 +94,18 @@ fun main(){
     println(res3.toString())
 
     println(helloWorld())
+
+    var str = "abc234ddf2434!@"
+    val count = StringUtil.lettersCount(str)
+    println("count is $count")
+    println("String count is ${str.lettersCount()}")
+
+    val money1 = Money(20)
+    val money2 = Money(10)
+    val money3 = money1 + money2
+    val money4 = money1 + 30
+    println(money3.value)
+    println(money4.value)
 }
 
 
@@ -105,4 +117,15 @@ fun getScore(name: String) = when {
     name == "Frank" -> 85
     name == "Jack" -> 50
     else -> 0
+}
+
+class Money(val value: Int) {
+    operator fun plus(money: Money) : Money {
+        val sum = value + money.value
+        return Money(sum)
+    }
+    operator fun plus(money: Int) : Money {
+        val sum = value + money
+        return Money(sum)
+    }
 }
